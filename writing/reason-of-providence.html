@@ -24,40 +24,39 @@ I use find my device and got nothing.
 </p>
 <p>After a couple year pass, this issue still buging my head and the data that I wasn't 
 able recover. A day when I do some random internet surfing, I bump into <a href="https://github.com/lolsecs/LolSec/blob/master/Botnet%20Bible.pdf">Botnet Bible</a>
-book by Tyson Hedge. 
-</p>
-<p>Since the book born from hacker capitalist pit (HackForums), that book 
+book by Tyson Hedge. Since the book born from hacker capitalist pit (HackForums), that book 
 focused on creating botnet and doing malware mass campaign that we are not go 
 to talk about. 
 </p>
-<p>The concept of robot network or botnet is amaze me. It will do good 
-countermeasure if my device go stoled, a DIY anti-theft mechanism, so 
-creating <a href="https://github.com/glatika/providence">Providence</a> and I hope could see benefit of using Botnet 
-in good terms like surveiling your own devices. 
+<p>The concept of robot network or botnet is amaze me. It imagine a remote control that 
+could do mass control of computer in single panel, It work like remote access tool but 
+for massive devices and customable payload.
+</p>
+<p>It will do good countermeasure if my device go stoled, a DIY anti-theft mechanism, so 
+I creating <a href="https://github.com/glatika/providence">Providence</a> as Proof-of-Concept 
+and I hope could see benefit of using Botnet mechanism in good terms like surveiling your 
+own devices. 
 </p>
 <h2 id="What-is-Command-and-Control-(C2)-?">What is Command and Control (C2) ?
 </h2>
 <div class="mendoza-center">
     <img src="/img/c2-architecture.png"/>
-</div><p>A C2 works like this, a devices will requesting command (beaconing) to 
-C2 server where we put command as bot operator then the C2 will give response
-a command that your devices need to execute.
+</div><p>C2 is a approach to communicate with many devices remotely for 
+maintaining access. C2 itself work in client-server architecture, 
+meaning there are a C2 server and C2 client (implant) - C2 client in 
+this context is your devices. 
 </p>
-<p>C2 is a infrastucture (program + server) used to communicate with your devices remotely for 
-maintaining access. C2 itself work in client-server architecture, mean there a C2 server and 
-C2 client (implant) - C2 client in this context is your devices. 
+<p>The C2 server is a program which issuing command for consumed by C2 client. 
+C2 client is a program that beaconing to C2 server and consuming command from 
+C2 server for executed then reporting back to it. 
 </p>
-<p>The C2 server is a server the used to supply command to devices and C2 client is a program 
-that beaconing to C2 server to request and execute command that supplied. C2 client supposed
-to running in device you want to access.
-</p>
-<p>Providence is C2 server only, which mean you need implement C2 client by your own. Maybe in 
+<p>Providence is C2 server only which mean you need implement C2 client by your own. Maybe in 
 future I will provide example of client.
 </p>
 <h2 id="What-the-general-purposeness-in-Providence-?">What the general-purposeness in Providence ?
 </h2>
 <p>C2 widely known for it malicious intent, thats why <a href="https://attack.mitre.org/tactics/TA0011/">ATT&amp;CK MITRE</a> become good
-references for detecting C2 presence. C2 could be use for command base for
+ references for detecting C2 presence. C2 could be use for command base for
  botnet army, control center in cyberwarfare, and much more.
 </p>
 <p>This not mean C2 does not have good purpose in it existential mean. There are 
@@ -66,14 +65,14 @@ at internet cafe, remote access tool and many other.
 </p>
 <p>Base example above you could choose what intention C2 client you want implement, Providence 
  works as message broker and report panel. The general purposed of Providence is
- adaptable of C2 to be match with client design that provide way to communicate 
+ message broker that match with client design that provide way to communicate 
  with operator, client-centric C2 server.
 </p>
 <div class="mendoza-center">
     <img src="/img/providence-poc.png"/>
 </div><p>In simple way, you just design the program you want then connect it with Providence.
-Providence recently only support gRPC, because it schema design so you just 
-generate client code and use it in your program. 
+Providence recently only support gRPC, because schema design approach can 
+generate client code from it. I think it will reducing integration effort into your program. 
 </p>
 <p>Futher, I will add HTTP/S support and adding some new communitcation channel 
 for open opportunity to advance feature like file transaction or data streaming.
@@ -87,6 +86,20 @@ proxy and set command.
 <p>The full mode intented if you want run full-spectrum of Providence in one-go, 
 like in local network or else.
 </p>
+<h2 id="What-is-Stock-and-Stock-Variant-?">What is Stock and Stock Variant ?
+</h2>
+<p>Stock mean client in C2 terms and Stock variant mean variant of client program. 
+</p>
+<p>For example,
+</p>
+<ul>
+    <li>I have a stock which is my phone with stock variant named "Phontrack" that
+        providence stock for android platform.</li>
+    <li>I have another stock with stock variant "Mimon" which providence stock that running in arduino.</li>
+</ul><p>Stock variant is custom name you give to C2 client, then register it to server. I do this separation 
+because each stock variant own it unique custom command need to be issued. 
+</p>
+<p>The stock can not registered to server if it variant details is not registered in server.</p>
       </body>
       <footer>
           <hr />
