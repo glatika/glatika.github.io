@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>Providence : General-purpose command and control panel.</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.45">
+        <link rel="stylesheet" type="text/css" href="/rxi.css">
+      </head>
+      <body>
+        <nav>
+          <section>
+              <a href="/">./</a>
+              <a href="/project.html">Projects</a>
+              <a href="/writing.html">Writing</a>
+          </section>
+        </nav>
+        
+
+<h1 id="Providence-:-General-purpose-command-and-control-panel">Providence : General-purpose command and control panel
+</h1>
+<p>A five years ago, my phone and laptop was stolen when I sleep at home. The accident 
+happend at morning when I still sleeping and the perpretator sneak to my room without 
+I notice. I go to internet cafe and all tracing effort have fail me at that time. 
+I use find my device and got nothing.
+</p>
+<p>After a couple year pass, this issue still buging my head and the data that I wasn't 
+able recover. A day when I do some random internet surfing, I bump into <a href="https://github.com/lolsecs/LolSec/blob/master/Botnet%20Bible.pdf">Botnet Bible</a>
+book by Tyson Hedge. 
+</p>
+<p>Since the book born from hacker capitalist pit (HackForums), that book 
+focused on creating botnet and doing malware mass campaign that we are not go 
+to talk about. 
+</p>
+<p>The concept of robot network or botnet is amaze me. It will do good 
+countermeasure if my device go stoled, a DIY anti-theft mechanism, so 
+creating <a href="https://github.com/glatika/providence">Providence</a> and I hope could see benefit of using Botnet 
+in good terms like surveiling your own devices. 
+</p>
+<h2 id="What-is-Command-and-Control-(C2)-?">What is Command and Control (C2) ?
+</h2>
+<div class="mendoza-center">
+    <img src="/img/c2-architecture.png"/>
+</div><p>A C2 works like this, a devices will requesting command (beaconing) to 
+C2 server where we put command as bot operator then the C2 will give response
+a command that your devices need to execute.
+</p>
+<p>C2 is a infrastucture (program + server) used to communicate with your devices remotely for 
+maintaining access. C2 itself work in client-server architecture, mean there a C2 server and 
+C2 client (implant) - C2 client in this context is your devices. 
+</p>
+<p>The C2 server is a server the used to supply command to devices and C2 client is a program 
+that beaconing to C2 server to request and execute command that supplied. C2 client supposed
+to running in device you want to access.
+</p>
+<p>Providence is C2 server only, which mean you need implement C2 client by your own. Maybe in 
+future I will provide example of client.
+</p>
+<h2 id="What-the-general-purposeness-in-Providence-?">What the general-purposeness in Providence ?
+</h2>
+<p>C2 widely known for it malicious intent, thats why <a href="https://attack.mitre.org/tactics/TA0011/">ATT&amp;CK MITRE</a> become good
+references for detecting C2 presence. C2 could be use for command base for
+ botnet army, control center in cyberwarfare, and much more.
+</p>
+<p>This not mean C2 does not have good purpose in it existential mean. There are 
+example to C2 used for good purpose, like parental app control, biling system
+at internet cafe, remote access tool and many other.
+</p>
+<p>Base example above you could choose what intention C2 client you want implement, Providence 
+ works as message broker and report panel. The general purposed of Providence is
+ adaptable of C2 to be match with client design that provide way to communicate 
+ with operator, client-centric C2 server.
+</p>
+<div class="mendoza-center">
+    <img src="/img/providence-poc.png"/>
+</div><p>In simple way, you just design the program you want then connect it with Providence.
+Providence recently only support gRPC, because it schema design so you just 
+generate client code and use it in your program. 
+</p>
+<p>Futher, I will add HTTP/S support and adding some new communitcation channel 
+for open opportunity to advance feature like file transaction or data streaming.
+</p>
+<h2 id="Why-there-3-modes-to-run-Providence-?">Why there 3 modes to run Providence ?
+</h2>
+<p>The main reason is scalability, you could have many proxy mode instance 
+for load balancing and run single panel mode instance to conect to one of the 
+proxy and set command.
+</p>
+<p>The full mode intented if you want run full-spectrum of Providence in one-go, 
+like in local network or else.
+</p>
+      </body>
+      <footer>
+          <hr />
+          <p>Copyright © glatika 2023 </p>
+      </footer>
+</html>

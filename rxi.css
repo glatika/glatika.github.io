@@ -64,6 +64,15 @@ a:hover{
       background: hsl(0,0%,75%);
       text-decoration: none;
     }
+    
+    img {
+      filter: brightness(0.88);
+    }
+
+    img:hover {
+      filter: brightness(1);
+    }
+
 
 }
 
